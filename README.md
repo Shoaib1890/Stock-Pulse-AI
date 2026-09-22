@@ -1,29 +1,21 @@
 # StockPulse India
 
-**AI-assisted Indian equity dashboard** that aggregates live market news, tracks a personal NSE-style watchlist, and scores headline sentiment with a large language model.
+**AI-assisted Indian equity dashboard** — aggregate live market news, track an NSE-style watchlist, and score headline sentiment with a large language model.
 
-[![Live Demo](https://img.shields.io/badge/Live%20Demo-stockpulsefinal.vercel.app-000000?logo=vercel&logoColor=white)](https://stockpulsefinal.vercel.app/)
-[![React](https://img.shields.io/badge/React-18-61DAFB?logo=react&logoColor=white)](https://react.dev/)
-[![TypeScript](https://img.shields.io/badge/TypeScript-5.5-3178C6?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
-[![Vite](https://img.shields.io/badge/Vite-5-646CFF?logo=vite&logoColor=white)](https://vitejs.dev/)
-[![Express](https://img.shields.io/badge/Express-5-000000?logo=express&logoColor=white)](https://expressjs.com/)
-[![Groq](https://img.shields.io/badge/Groq-LLaMA%203.1-F55036)](https://groq.com/)
-
-> This project is a **portfolio / demonstration application**. It is **not** investment advice, a brokerage product, or a substitute for licensed financial research.
-
-**Live demo:** [https://stockpulsefinal.vercel.app/](https://stockpulsefinal.vercel.app/)  
-**Repository:** [Shoaib1890/Stock-Pulse-AI](https://github.com/Shoaib1890/Stock-Pulse-AI)
+**Live demo:** [https://stockpulsefinal.vercel.app/](https://stockpulsefinal.vercel.app/)
 
 ---
 
-## Problem
+## Overview
 
-Retail investors in Indian markets consume news from many outlets (Economic Times, Moneycontrol, NDTV Profit, and others). Headlines are noisy, often duplicated, and rarely tied back to a specific holding list. StockPulse India addresses that gap by:
+StockPulse India is a full-stack web application for following Indian markets without jumping between news sites. Instead of scanning Economic Times, Moneycontrol, and NDTV Profit separately, users get a **single de-duplicated news feed**, a **personal watchlist**, and **AI sentiment** on headlines related to their holdings.
 
-1. **Collecting** market RSS feeds into a single, de-duplicated timeline.
-2. **Linking** articles to tickers via keyword matching (e.g. `RELIANCE`, `TCS`, `HDFCBANK`).
-3. **Filtering** the corpus to a user’s portfolio.
-4. **Classifying** related headlines as positive, negative, or neutral using Groq-hosted **LLaMA 3.1 8B Instant**, with a confidence score and a short rationale.
+The product flow is:
+
+1. **Browse** — market RSS feeds collected, de-duplicated, and shown newest-first
+2. **Track** — add NSE-style symbols (e.g. `RELIANCE`, `TCS`, `HDFCBANK`) to a watchlist
+3. **Filter** — articles tagged to those tickers via keyword matching
+4. **Analyze** — Groq-hosted LLaMA 3.1 classifies related headlines as positive, negative, or neutral, with confidence and a short rationale
 
 ---
 
