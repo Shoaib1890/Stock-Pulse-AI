@@ -12,7 +12,7 @@
 > This project is a **portfolio / demonstration application**. It is **not** investment advice, a brokerage product, or a substitute for licensed financial research.
 
 **Live demo:** [https://stockpulsefinal.vercel.app/](https://stockpulsefinal.vercel.app/)  
-**Repository:** [Shoaib1890/alpha-stock-whisperer-india](https://github.com/Shoaib1890/alpha-stock-whisperer-india)
+**Repository:** [Shoaib1890/Stock-Pulse-AI](https://github.com/Shoaib1890/Stock-Pulse-AI)
 
 ---
 
@@ -161,8 +161,8 @@ Example response item:
 ### 1. Clone
 
 ```bash
-git clone https://github.com/Shoaib1890/alpha-stock-whisperer-india.git
-cd alpha-stock-whisperer-india
+git clone https://github.com/Shoaib1890/Stock-Pulse-AI.git
+cd Stock-Pulse-AI
 ```
 
 ### 2. Backend
