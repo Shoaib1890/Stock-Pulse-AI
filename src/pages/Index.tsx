@@ -113,6 +113,7 @@ const Index = () => {
 
   // --- sentiment ---
   const [sentiment, setSentiment] = useState<SentimentAnalysis | null>(null);
+  const sentimentReqId = useRef(0);
 
   // --- misc ---
   const [newStock, setNewStock] = useState("");
@@ -184,14 +185,15 @@ const Index = () => {
       setSentiment({ overall: "neutral", confidence: 70, summary: [] });
       return;
     }
-    // Cap at 10 headlines to keep latency reasonable
-    const headlines = portfolioNewsData.slice(0, 10).map((n) => n.title);
+    const headlines = portfolioNewsData.map((n) => n.title).slice(0, 20);
+    const reqId = ++sentimentReqId.current;
     try {
       const res = await fetch(`${BASE_URL}/sentiment`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ headlines }),
       });
+      if (reqId !== sentimentReqId.current) return;
       if (!res.ok) throw new Error("Sentiment API error");
       const data = await res.json();
       const items: SentimentSummaryItem[] = Array.isArray(data.sentiment)
@@ -212,8 +214,10 @@ const Index = () => {
       const avgConf = items.length
         ? Math.round(items.reduce((s, i) => s + (i.confidence || 70), 0) / items.length)
         : 70;
+      if (reqId !== sentimentReqId.current) return;
       setSentiment({ overall, confidence: avgConf, summary: items });
     } catch {
+      if (reqId !== sentimentReqId.current) return;
       setSentiment({ overall: "neutral", confidence: 70, summary: [] });
     }
   }, []);
@@ -708,7 +712,7 @@ const Index = () => {
                   {loadingPortfolioNews
                     ? "Analyzing headlines…"
                     : sentiment && sentiment.summary.length > 0
-                    ? `${sentiment.summary.length} headlines analyzed · powered by Groq LLaMA 3`
+                    ? `${sentiment.summary.length} headlines analyzed · powered by Groq`
                     : "Add portfolio stocks to get AI sentiment on related news"}
                 </p>
               </div>
